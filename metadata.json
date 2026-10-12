@@ -1,0 +1,6 @@
+{
+  "name": "Math Mastery — The Ultimate Mathematics Adventure",
+  "description": "Embark on an epic 100-stage mathematics adventure across 10 worlds, 2,000 levels, and over 200,000 question positions from number foundations to ultimate higher mathematics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

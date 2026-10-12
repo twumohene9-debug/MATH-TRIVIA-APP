@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-mono-numbers {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Crucial: Prevent KaTeX MathML from rendering as duplicate text alongside HTML */
+.katex-mathml {
+  display: none !important;
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+}
+
+/* KaTeX custom sizing & responsive formulas */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+  max-width: 100%;
+}
+
+.katex {
+  font-size: 1.1em;
+  text-rendering: optimizeLegibility;
+}
+
+/* Logo-Inspired Theme Decorative Motifs:
+   Royal Navy #161c4f + Fuchsia-Magenta #ec4899 + Electric Indigo #4f46e5 */
+.theme-stripes-top {
+  background: repeating-linear-gradient(
+    90deg,
+    #161c4f 0px,
+    #161c4f 14px,
+    transparent 14px,
+    transparent 18px,
+    #ec4899 18px,
+    #ec4899 32px,
+    transparent 32px,
+    transparent 36px,
+    #4f46e5 36px,
+    #4f46e5 50px,
+    transparent 50px,
+    transparent 54px
+  );
+  height: 4px;
+}
+
+.logo-accent-line {
+  background: linear-gradient(90deg, #161c4f 0%, #4f46e5 45%, #ec4899 100%);
+}
+
+/* Luminous mathematical grid background pattern */
+.math-grid-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(79, 70, 229, 0.08) 1.5px, transparent 0),
+    linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+}
+
+.math-grid-pattern-dark {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1.5px, transparent 0),
+    linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+}
+
+/* Subtle clean scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   RESPONSIVE MEDIA QUERIES: FITTING ON ALL SCREEN SIZES
+   ============================================================ */
+
+/* 1. Mobile & Small Handheld Screens (<= 640px) */
+@media (max-width: 640px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Safe area padding for mobile notches */
+  header {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+
+  main {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+
+  /* Compact KaTeX on small screens */
+  .katex {
+    font-size: 0.98em;
+  }
+
+  .katex-display {
+    padding: 0.25rem 0;
+    margin: 0.5rem 0;
+    font-size: 0.95em;
+  }
+
+  /* Button touch target compliance */
+  button, [role="button"] {
+    min-height: 40px;
+  }
+}
+
+/* 2. Tablets & Mid-Sized Displays (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .katex {
+    font-size: 1.05em;
+  }
+
+  .katex-display {
+    padding: 0.4rem 0;
+    margin: 0.75rem 0;
+  }
+}
+
+/* 3. Desktops & Laptops (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .katex {
+    font-size: 1.1em;
+  }
+}
+
+/* 4. Ultra-Wide & 4K Displays (>= 1441px) */
+@media (min-width: 1441px) {
+  .katex {
+    font-size: 1.15em;
+  }
+
+  main {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* 5. Landscape Mode on Mobile Devices */
+@media (max-height: 500px) and (orientation: landscape) {
+  header {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .katex-display {
+    padding: 0.15rem 0;
+    margin: 0.25rem 0;
+    font-size: 0.9em;
+  }
+}
